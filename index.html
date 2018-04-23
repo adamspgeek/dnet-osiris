@@ -68,65 +68,47 @@
             <a title="History"><i class="fa fa-history" aria-hidden="true"></i></a>
         </aside>
         <aside class="unpin-widget">
-            <a title="Unpin"></a>
+            <a title="Unpin"><input type="checkbox"></i></a>
         </aside>
     </div>
-      <!--Will organize later after finalizing-->
-    <!--<section class="web-ui">
-        <div class="default history">
-            <div class="history-menu">
-                <h2>History</h2>
-                <ul class="menu">
-                    <li style="margin-bottom:25px;" class="active">All</li>
-                    <li>Today</li>
-                    <li>Yesterday</li>
-                    <li>Older</li>
-                </ul>
-            </div>
-            <div class="history-content">
-                <div class="content">
-                    <header class="history-header">
-                      <div class="row">
-                          <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                              <form>
-                                <input type="text" placeholder="Search history">
-                              </form>
-                          </div>
-                          <div class="col-6 col-sm-6 col-md-6 col-lg-6">
-                              <div class="text-right">
-                                  <button>Clear browsing data..</button>
-                              </div>
-                          </div>
-                      </div>
-                    </header>
-                    <section class="history-process">
-                        <div class="row">
-                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                              <div class="history-today">
-
-                              </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                              <div class="history-yesterday">
-
-                              </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                              <div class="history-older">
-
-                              </div>
-                          </div>
-                        </div>
-                    </section>
+    <!-- <main role="main" class="main-content">
+        <div id="view-container">
+          <webview id="view1" class="view-instance"></webview> -->
+          <!-- <webview id="view2" class="view-instance active" src="download-history.html"></webview> -->
+          <!--<section class="download-page-wrapper">
+            <header class="download-header">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-xs-2 col-sm-3 col-md-2 col-md-2">
+                    <label class="header-title">Download</label>
+                  </div>
+                  <div class="col-xs-6 col-sm-8 col-md-8 col-md-8">
+                    <div class="download-page-search-box">
+                      <i class="fa fa-search" aria-hidden="true"></i>
+                      <input id="download-search-box" onkeyup="myFunction()" type="text" name="" value="" placeholder="Search downloads">
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2 col-md-2 col-md-2 text-right">
+                    <button id="download-menu" class="fa fa-cog" aria-hidden="true"></button>
+                    <nav>
+                      <ul class="download-menu-settings text-left" style="display:none;">
+                        <li><a href="#">Clear All</a></li>
+                        <li><a href="#">Open Download Folder</a></li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
+              </div>
+            </header>
+            <div id="download-list-page">
+              <ul id="download-list">
+                <li>
+                  <div class="list">
+                  </div>
+                </li>
+              </ul>
             </div>
-        </div>
-    </section>
-    end Sidebar Widget-->
+          </section> -->
     <main role="main" class="main-content padding-adjust">
         <div id="view-container">
             <!-- <webview id="view1" class="view-instance"></webview> -->
@@ -134,7 +116,26 @@
             <span id="webview-reference"></span>
         </div>
     </main>  <!--end main content-->
+    <script>
+      function myFunction() {
+          var input, filter, ul, li, span, i;
+          input = document.getElementById("download-search-box");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("download-list");
+          li = ul.getElementsByTagName("li");
+          for (i = 0; i < li.length; i++) {
 
+              span = li[i].getElementsByTagName("span")[0];
+              if (span.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                  //$('.remove-search-value').show();
+              } else {
+                  li[i].style.display = "none";
+
+              }
+          }
+      }
+    </script>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="assets/js/global-script.js"></script>
