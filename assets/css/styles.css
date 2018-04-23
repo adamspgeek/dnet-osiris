@@ -4,7 +4,9 @@ body {
     overflow-x: hidden;
 }
 .header{
-
+  background: #fff;
+  z-index: 9999;
+  position: relative;
 }
 #navigation {
   color: #000;
@@ -190,7 +192,7 @@ input#url {
 }
 
 .padding-adjust{
-    margin-left: 47px;
+    margin-left: 46px;
 }
 
 /*
@@ -561,7 +563,14 @@ Spee dial class
     position: relative;
     top: 2px;
   }
-
+.unpin-widget{
+    position: fixed;
+    bottom: 0;
+    left: 6px;
+}
+.unpin{
+  background: rgba(25, 29, 30, 0.5)!important;
+}
 .slick-slide {
     display: block;
 }

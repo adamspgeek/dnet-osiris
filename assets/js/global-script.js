@@ -13,7 +13,7 @@ $('.wallpaper-items-settings').slick({
   slidesToScroll: 7
 });
 //This is for the sidebar
-(function( $ ) {
+(function() {
 
   $( ".bookmarks a" ).click(function(event) {
       event.preventDefault();
@@ -28,23 +28,39 @@ $('.wallpaper-items-settings').slick({
       $('body').css('overflow','hidden');
   });
 
-})(jQuery);
+})();
 //Setting easy setup popup
-(function( $ ) {
+(function() {
+  $('.unpin-widget input').change(function(event) {
+      event.preventDefault();
+        if($(this).is(":checked")) {
+          $('header.header, .main-content').removeClass('padding-adjust');
+          $('.widget-tabs').addClass('unpin');
+        }else{
+          $('header.header').addClass('padding-adjust');
+          $('header.header, .main-content').addClass('padding-adjust');
+          $('.widget-tabs').removeClass('unpin');
+        }
+    });
+})();
+
+//unpin
+(function() {
   $( "#show-setting-button i" ).click(function(event){
     $('.startup-pop-up-settings').addClass('setting-active');
     $('.transparent-background').show();
   });
   $( "#close-settings" ).click(function(event){
     $('.startup-pop-up-settings').removeClass('setting-active');
+    $('.transparent-background').hide();
   });
   $( ".transparent-background" ).click(function(event){
     $('.startup-pop-up-settings').removeClass('setting-active');
-    $('.transparent-background').show();
+    $('.transparent-background').hide();
   });
-})(jQuery);
+})();
 
-(function( $ ) {
+(function() {
   /* Tabs Activiation
 	================================================== */
 
@@ -69,8 +85,8 @@ $('.wallpaper-items-settings').slick({
       }
 		});
 	});
-})(jQuery);
-(function( $ ) {
+})();
+(function() {
   //Block ads process Settings
   var buttonBlockadds = $('.block-ads-popup-settings');
   var filterException = $('.filter-exception-list');
@@ -126,8 +142,8 @@ $('.wallpaper-items-settings').slick({
     event.preventDefault();
     $('.bookmarks-import-overlay-wrapper').hide();
   });
-})(jQuery);
-(function( $ ) {
+})();
+(function() {
   $('#download-menu').click(function(event){
     event.preventDefault();
     $('.download-menu-settings').show();
@@ -136,4 +152,4 @@ $('.wallpaper-items-settings').slick({
     event.preventDefault();
     $('.download-menu-settings').hide();
   });
-})(jQuery);
+})();

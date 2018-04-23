@@ -5,6 +5,7 @@ const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 const dialog = electron.dialog
+const shell = electron.shell
 const path = require('path')
 const url = require('url')
 const jsonfile = require('jsonfile');
@@ -37,6 +38,9 @@ function createWindow () {
         // when you should delete the corresponding element.
         mainWindow = null
     })
+
+    // Opens a folder in a computer
+    // shell.showItemInFolder('/Users/barry.lavides/Downloads/electron-files')
 }
 
 // This method will be called when Electron has finished
@@ -61,7 +65,7 @@ app.on('activate', function () {
     }
 })
 
-function addDownloadHistory(data) {
+function addDownloadHistory(filename) {
     jsonfile.readFile(download_history, function(err, file) {
         var _date = dateFormat(new Date(), 'm/d/yyyy');
         var dataObject = {};
@@ -70,7 +74,7 @@ function addDownloadHistory(data) {
             dataObject[_date] = {
                 'files': [{
                     'icon': '',
-                    'title': '',
+                    'title': filename,
                     'status': '',
                     'source': '',
                     'action': 'show folder or retry'
@@ -78,10 +82,10 @@ function addDownloadHistory(data) {
             }
         } else {
             file[String(_date)]['files'].push({
-                'icon': '2',
-                'title': '2',
-                'status': '2',
-                'source': '2',
+                'icon': '',
+                'title': filename,
+                'status': '',
+                'source': '',
                 'action': 'show folder or retry'
             })
 
@@ -95,16 +99,21 @@ function addDownloadHistory(data) {
 
 electron.BrowserWindow.prototype.setDownloadSavePath = function (path) {
     this.webContents.session.once('will-download', (event, item) => {
-        addDownloadHistory();
+        addDownloadHistory(item.getFilename());
 
-        var savePath = dialog.showSaveDialog(mainWindow, {
-            title: 'foo',
-            defaultPath: path + '/' + item.getFilename()
-        });
+        // var savePath = dialog.showSaveDialog(mainWindow, {
+        //     title: 'foo',
+        //     defaultPath: path + '/' + item.getFilename()
+        // });
+        var savePath = dialog.showSaveDialog({});
 
-        item.setSavePath(savePath);
+        console.log(savePath)
+
+        // item.setSavePath(savePath);
+        // item.setSavePath(path);
     });
 };
+
 
 
 
