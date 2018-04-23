@@ -24,10 +24,8 @@ $('.wallpaper-items-settings').slick({
   });
   $( ".history a" ).click(function(event) {
       event.preventDefault();
-      $(".web-ui").addClass("default-widget-active");
-      $('body').css('overflow','hidden');
+      $(".browser-history-wrapper").show();
   });
-
 })();
 //Setting easy setup popup
 (function() {
