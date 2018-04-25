@@ -10,24 +10,38 @@ body {
 }
 #navigation {
   color: #000;
-  padding-left: 8px;
-  height: 47px;
-  padding-top: 13px;
-  background: #FAFAFA;
-  border-bottom: 2px solid #FAFAFA;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  top: 0;
-  left: 0;
+    padding: 13px 5px;
+    padding-top: 13px;
+    background: #FAFAFA;
+    border-bottom: 2px solid #FAFAFA;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    margin: 0;
+}
+#navigation ul{
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
-
+#navigation ul li{
+  display: inline-block;
+  vertical-align: middle;
+}
+#navigation ul li:nth-child(1){
+  width: calc(8% - 2px);
+}
+#navigation ul li:nth-child(2){
+  width: calc(88% - 2px);
+  position: relative;
+}
+#navigation ul li:nth-child(3){
+  width: calc(3% - 2px);
+}
 #back, #forward, #refresh,#speed-dial {
-    color: #777;
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
-    vertical-align: middle;
-    line-height: 1px
+  color: #777;
+  margin-right: 10px;
+  vertical-align: middle;
+  line-height: 1px;
+  display: inline-block;
 
 }
 
@@ -48,26 +62,25 @@ i {
 }
 
 #omnibox {
-    float: left;
-    width: 80%;
-    margin-right: 20px;
+    width: 100%;
 }
 
 input#url {
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 1px;
-    height: 20px;
-    font-size: 14px;
-    padding: 2px;
-    padding-left: 4px;
-    width: 100%;
-    line-height: 0;
-    color: #777;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 1px;
+  font-size: 14px;
+  padding: 9px 37px;
+  width: 100%;
+  line-height: 0;
+  color: #777;
+  outline: none;
 }
 
 #fave {
-    float: left;
-    color: #777;
+  color: #777;
+  position: absolute;
+  right: 10px;
+  top: 7px;
 }
 
 #fave i {
@@ -174,17 +187,26 @@ input#url {
     display: flex;
     align-items: center;
 }
-
-.nav-tabs-tab {
-    min-width: 60px;
-    width: 180px;
-    min-height: 20px;
-    cursor: pointer;
-
-    border-bottom: 1px solid #777;
-    border-right: 1px solid #777;
+#search-bar-icon{
+  position: absolute;
+  left: 11px;
+  top: 9px;
+  padding-right: 5px;
+  border-right: 1px solid #ccc;
 }
-
+.nav-tabs-tab {
+  min-width: 60px;
+  width: 180px;
+  min-height: 25px;
+  cursor: pointer;
+  position: relative;
+  padding: 7px 2px;
+  border-right: 1px solid #777;
+}
+.tabs-background-wrapper{
+  background: linear-gradient(#f9f9f9, #f5f5f5);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
 .nav-icons {
     fill: #000;
     width: 24px;

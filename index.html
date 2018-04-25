@@ -13,7 +13,7 @@
   <body style="overflow-y:hidden;">
     <!--header navigation-->
     <header class="header padding-adjust">
-        <div class="row">
+        <div class="row tabs-background-wrapper">
           <div class="col-xs-10 col-sm-10 col-md-10">
             <div id="nav-body-tabs">
                 <span id="tab1" class="nav-tabs-tab" data-session="4">
@@ -44,29 +44,40 @@
         <div class="row">
           <div class="col-md-12">
             <nav id="navigation">
-                <div id="back">
-                    <i title="Back" class="fa arrow-left" aria-hidden="true"></i>
-                </div>
-                <div id="forward">
-                    <i title="Forward" class="fa arrow-right" aria-hidden="true"></i>
-                </div>
-                <div id="refresh">
-                    <i title="Refresh" class="fa refresh-button" aria-hidden="true"></i>
-                </div>
-                <div id="speed-dial">
-                    <i title="Start Page" class="fa fa-list" aria-hidden="true"></i>
-                </div>
-                <div id="omnibox">
-                    <input type="text" id="url">
-                </div>
-                <div id="fave">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-                <div id="fave-popup" data-state="closed">
-                </div>
-                <div id="list">
-                    <i class="fa fa-list" aria-hidden="true"></i>
-                </div>
+                <ul>
+                  <li>
+                    <div id="back">
+                        <i title="Back" class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </div>
+                    <div id="forward">
+                        <i title="Forward" class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </div>
+                    <div id="refresh">
+                        <i title="Refresh" class="fa refresh-button" aria-hidden="true"></i>
+                    </div>
+                    <div id="speed-dial">
+                        <i title="Start Page" class="fa fa-th-large" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div id="search-bar-icon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                    <div id="omnibox">
+                        <input type="text" id="url" placeholder="Enter search or web adress">
+                    </div>
+                    <div id="fave">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div id="fave-popup" data-state="closed">
+                    </div>
+                    <div id="list">
+                        <i title="downloads" class="fa fa-download" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                </ul>
             </nav><!--end header navigation-->
           </div>
         </div>
