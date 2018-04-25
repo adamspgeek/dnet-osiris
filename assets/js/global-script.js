@@ -85,6 +85,32 @@ $('.wallpaper-items-settings').slick({
 	});
 })();
 (function() {
+  /* Clear Cache history Activiation
+	================================================== */
+
+	var tabs = $('ul.browser-history-list');
+
+	tabs.each(function(i) {
+
+		//Get all tabs
+		var tab = $(this).find('> li.history-tab');
+		tab.click(function(e) {
+      e.preventDefault();
+			//Get Location of tab's content
+			var browserId = $(this).attr('browser-id');
+      //Make Tab Active
+      tab.removeClass('bhistory-active');
+      $(this).addClass('bhistory-active');
+      //Hide Previous Tab Content & remove active class
+      $('div.bhistory-tab-item').removeClass('bhistory-active-item');
+      //Show Tab Content & add active class
+      if($(browserId).not('active')){
+        $("[browser-data='"+browserId+"']").addClass('bhistory-active-item');
+      }
+		});
+	});
+})();
+(function() {
   //Block ads process Settings
   var buttonBlockadds = $('.block-ads-popup-settings');
   var filterException = $('.filter-exception-list');

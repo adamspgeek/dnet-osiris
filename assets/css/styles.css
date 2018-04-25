@@ -1093,12 +1093,63 @@ Spee dial class
 .browser-history-viewer:before{
 
 }
+
 .bhistory-active{
   background: #c7e2ea;
 }
 .browser-history-tab{
   border-right: 1px solid #ccc;
   height: 100vh;
+}
+.browser-history-data{
+
+}
+.browser-history-data .bhistory-tab-item{
+  display: none;
+}
+.browser-history-data .bhistory-active-item{
+  display: block;
+}
+.browser-history-data .bhistory-tab-item ul{
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.browser-history-data .bhistory-tab-item ul li{
+  border-bottom: 1px solid #ccc;
+  padding: 5px 9px;
+  position: relative;
+}
+.browser-history-data .bhistory-tab-item ul li:hover{
+  background: #ccc;
+}
+.browser-history-data .bhistory-tab-item ul li:hover>i.fa{
+  display: block;
+}
+.browser-history-data .bhistory-tab-item ul li i.fa{
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    font-size: 21px;
+    display: none;
+}
+.browser-history-data .bhistory-tab-item ul li:last-child{
+  border-bottom: none;
+}
+.browser-history-data .bhistory-tab-item img{
+  width: 20px;
+}
+.browser-history-data .bhistory-tab-item h5.date{
+  padding: 10px 0;
+}
+.browser-history-data .bhistory-tab-item header{
+  padding: 0 0;
+  border-bottom: 0;
+}
+.browser-history-data .bhistory-tab-item header h5{
+  margin: 5px 0;
+}
+.browser-history-data .bhistory-tab-item a{
 }
 .window-resize-wrapper{
   padding:0 0 0 0;
