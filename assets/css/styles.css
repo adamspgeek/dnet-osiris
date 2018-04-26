@@ -44,6 +44,9 @@ body {
   display: inline-block;
 
 }
+#nav-body-tabs .active{
+  background: #fafafa;
+}
 
 .arrow-left:before {
     content: "\f060";
@@ -1157,4 +1160,7 @@ Spee dial class
 .window-resize-wrapper i{
   padding: 10px;
   font-size: 18px;
+}
+.speed-dial-page #speed-dial{
+ color:#ccc;
 }
