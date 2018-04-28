@@ -167,7 +167,7 @@ function handleUrl (event) {
 }
 
 function addNavTab(id) {
-    var element = '<span id="tab'+ id +'" class="nav-tabs-tab" data-session="4">\
+    var element = '<span id="tab'+ id +'" class="nav-tabs-tab active" data-session="'+ id +'">\
             <i class="nav-tabs-favicon nav-icons">\
                 <svg height="100%" viewBox="0 0 24 24" fill="#ffffff">\
                     <path d="M0 0h24v24H0z" fill="none"></path>\
@@ -175,14 +175,14 @@ function addNavTab(id) {
                 </svg>\
             </i>\
             <i class="nav-tabs-title" title="Google">Google</i>\
-            <i class="nav-tabs-close nav-icons">\
+            <i class="nav-tabs-close nav-icons" data-close="'+ id +'">\
                 <svg height="100%" viewBox="0 0 24 24">\
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>\
                     <path d="M0 0h24v24H0z" fill="none"></path>\
                 </svg>\
             </i>\
         </span>'
-
+    $('#tab'+ (id - 1)).removeClass('active');
     $(element).insertBefore('#nav-tabs-add');
 }
 
@@ -199,8 +199,9 @@ function addTab (event) {
     webviewTag.className = 'view-instance active';
     webviewTag.src = 'default.html'; //loading of URL updated to default from google.com
     var newIndex = lastIndex + 1;
+    webviewTag.setAttribute("data-session-content", newIndex);
     webviewTag.id = 'view'+ newIndex;
-
+    $('body').attr('body-filter',newIndex);
     getElementById('view-container').insertBefore(webviewTag, getElementById('webview-reference'))
 
     // Create new tab elements and increment the tab id
@@ -221,9 +222,20 @@ function addTab (event) {
 function switchTab(event) {
     var tabId = parseInt($(this).attr('id').replace('tab',''));
     var url = $('#view'+tabId).attr('src');
-
+    //Nav active
+    $('.nav-tabs-tab').removeClass('active');
+    $(this).addClass('active');
+    //Webview active
     $('webview').removeClass('active');
     $('#view'+tabId).addClass('active');
+    $('body').attr('body-filter',tabId);
+    if($('.active .nav-tabs-title').attr('title')=="Speed Dial"){
+      $('body').addClass('speed-dial-page');
+      $('#speed-dial i').removeClass('speed-dial-button');
+    }else{
+      $('body').removeClass('speed-dial-page');
+      $('#speed-dial i').addClass('speed-dial-button');
+    }
 
     // Update url in address bar when switching tabs
     omnibox.value = url;
@@ -237,15 +249,18 @@ function closeTab(event) {
     var url = $('#view'+prevViewId).attr('src');
 
     $('#tab'+selectedId).remove();
-    $('webview').removeClass('active');
-    $('#view'+prevViewId).addClass('active');
+    $("#view"+selectedId).remove();
+    // $('webview').removeClass('active');
+    $('#tab'+(selectedId+1)).addClass('active');
+    $('#view'+(selectedId+1)).addClass('active');
+    $('body').attr('body-filter',(selectedId+1));
 
     // Update url in address bar when deleting tabs
     omnibox.value = url;
 }
 //Defaut settings tab (History, Speed Dial)
 function defaultSettings(){
-  var element = '<span id="tab'+ id +'" class="nav-tabs-tab" data-session="4">\
+  var element = '<span id="tab'+ id +'" class="nav-tabs-tab" data-session="'+ id +'">\
           <i class="nav-tabs-favicon nav-icons">\
               <svg height="100%" viewBox="0 0 24 24" fill="#ffffff">\
                   <path d="M0 0h24v24H0z" fill="none"></path>\
@@ -356,11 +371,19 @@ function loadStartupSettings(){
         }
     });
 }
-
+function startPage(){
+  $('.nav-tabs-title').each(function(){
+      if($(this).attr('title')=="Speed Dial"){
+        $('body').addClass('speed-dial-page');
+      }
+   });
+}
 // ------------------------------
 // --           EVENTS
 // ------------------------------
-
+// If the page is load
+window.addEventListener("load",startPage, false);
+//----------------------------
 refreshBtn.addEventListener('click', reloadView);
 omnibox.addEventListener('keydown', loadSiteUrl);
 backBtn.addEventListener('click', backView);
@@ -392,6 +415,3 @@ $(document.body).on('click', '.nav-tabs-close', closeTab);
 
 let win = remote.getCurrentWindow();
 win.setDownloadSavePath('/Users/barry.lavides/Downloads/electron-files');
-
-
-

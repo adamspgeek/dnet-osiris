@@ -10,51 +10,77 @@
     <link rel="stylesheet" href="assets/css/history-tab.css">
     <link rel="stylesheet" href="assets/css/settings.css">
   </head>
-  <body style="overflow-y:hidden;">
+  <body style="overflow-y:hidden;" body-filter="2">
     <!--header navigation-->
     <header class="header padding-adjust">
-        <div id="nav-body-tabs">
-            <span id="tab1" class="nav-tabs-tab" data-session="4">
-                <i class="nav-tabs-favicon nav-icons">
-                    <svg height="100%" viewBox="0 0 24 24" fill="#ffffff">
+        <div class="row tabs-background-wrapper">
+          <div class="col-xs-10 col-sm-10 col-md-10">
+            <div id="nav-body-tabs">
+                <span id="tab2" class="nav-tabs-tab active" data-session="2">
+                    <i class="nav-tabs-favicon nav-icons">
+                        <svg height="100%" viewBox="0 0 24 24" fill="#ffffff">
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+                        </svg>
+                    </i>
+                    <i class="nav-tabs-title" title="Speed Dial">Speed Dial</i>
+                </span>
+                <i id="nav-tabs-add" class="nav-icons" title="Add new tab">
+                    <svg height="100%" viewBox="0 0 24 24">
                         <path d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path>
                     </svg>
                 </i>
-                <i class="nav-tabs-title" title="Speed Dial">Speed Dial</i>
-            </span>
-            <i id="nav-tabs-add" class="nav-icons" title="Add new tab">
-                <svg height="100%" viewBox="0 0 24 24">
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path>
-                </svg>
-            </i>
+            </div>
+          </div>
+          <div class="col-xs-2 col-sm-2 col-md-2">
+            <div class="window-resize-wrapper text-right">
+              <i  class="fa fa-window-minimize" aria-hidden="true"></i>
+              <i  class="fa fa-window-restore" aria-hidden="true"></i>
+              <i  class="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
         </div>
-        <nav id="navigation">
-            <div id="back">
-                <i title="Back" class="fa arrow-left" aria-hidden="true"></i>
-            </div>
-            <div id="forward">
-                <i title="Forward" class="fa arrow-right" aria-hidden="true"></i>
-            </div>
-            <div id="refresh">
-                <i title="Refresh" class="fa refresh-button" aria-hidden="true"></i>
-            </div>
-            <div id="speed-dial">
-                <i title="Start Page" class="fa fa-list" aria-hidden="true"></i>
-            </div>
-            <div id="omnibox">
-                <input type="text" id="url">
-            </div>
-            <div id="fave">
-                <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-            <div id="fave-popup" data-state="closed">
-            </div>
-            <div id="list">
-                <i class="fa fa-list" aria-hidden="true"></i>
-            </div>
-        </nav><!--end header navigation-->
+        <div class="row">
+          <div class="col-md-12">
+            <nav id="navigation">
+                <ul>
+                  <li>
+                    <div id="back">
+                        <i title="Back" class="fa fa-chevron-left" aria-hidden="true"></i>
+                    </div>
+                    <div id="forward">
+                        <i title="Forward" class="fa fa-chevron-right" aria-hidden="true"></i>
+                    </div>
+                    <div id="refresh">
+                        <i title="Refresh" class="fa refresh-button" aria-hidden="true"></i>
+                    </div>
+                    <div id="speed-dial">
+                        <i title="Start Page" class="fa fa-th-large" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div id="search-bar-icon">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                    <div id="omnibox">
+                        <input type="text" id="url" placeholder="Enter search or web adress">
+                    </div>
+                    <div id="fave">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                  <li>
+                    <div id="fave-popup" data-state="closed">
+                    </div>
+                    <div id="list">
+                        <i title="downloads" class="fa fa-download" aria-hidden="true"></i>
+                    </div>
+                  </li>
+                </ul>
+            </nav><!--end header navigation-->
+          </div>
+        </div>
     </header>
     <!--Sidebar Widget-->
     <div class="widget-tabs">
@@ -68,50 +94,409 @@
             <a title="History"><i class="fa fa-history" aria-hidden="true"></i></a>
         </aside>
         <aside class="unpin-widget">
-            <a title="Unpin"></a>
+            <a title="Unpin"><input type="checkbox"></i></a>
         </aside>
     </div>
     <main role="main" class="main-content padding-adjust">
-        <div id="view-container">
-          <webview id="view1" class="view-instance"></webview>
-          <!-- <webview id="view2" class="view-instance active" src="download-history.html"></webview> -->
-          <!--<section class="download-page-wrapper">
-            <header class="download-header">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-xs-2 col-sm-3 col-md-2 col-md-2">
-                    <label class="header-title">Download</label>
-                  </div>
-                  <div class="col-xs-6 col-sm-8 col-md-8 col-md-8">
-                    <div class="download-page-search-box">
-                      <i class="fa fa-search" aria-hidden="true"></i>
-                      <input id="download-search-box" onkeyup="myFunction()" type="text" name="" value="" placeholder="Search downloads">
+        <!--Clear cache history-->
+        <div class="browser-history-wrapper" style="display:none;">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="browser-history-tab">
+                <h2>History</h2>
+                <ul class="browser-history-list">
+                  <li class="history-tab" browser-id="1" class="bhistory-active">All</li>
+                  <li class="separator"></li>
+                  <li class="history-tab" browser-id="2">Today</li>
+                  <li class="history-tab" browser-id="3">Yesterday</li>
+                  <li class="history-tab" browser-id="4">Older</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="browser-history-viewer">
+                  <header>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <input class="input-search-history" type="text" name="" value="" placeholder="Search history">
+                      </div>
+                      <div class="col-md-6">
+                        <div class="text-right">
+                            <button type="button" name="button">Clear browsing data..</button>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+                  <div class="browser-history-data" style="overflow-y:scroll;overflow-x:hidden;">
+                    <div class="bhistory-tab-item bhistory-active-item" browser-data="1">
+                      <div class="history-today">
+                        <h5 class="date">Today - Wednesday, April 25, 2018</h5>
+                      </div>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                      </ul>
+                      <div class="history-yesterday">
+                        <h5 class="date">Yesterday - Wednesday, April 25, 2018</h5>
+                      </div>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                      </ul>
+                      <div class="history-older">
+                        <h5 class="date">Monday, April 23, 2018</h5>
+                      </div>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="bhistory-tab-item" browser-data="2">
+                      <div class="history-today">
+                        <h5 class="date">Today - Wednesday, April 25, 2018</h5>
+                      </div>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="bhistory-tab-item" browser-data="3">
+                      <div class="history-yesterday">
+                        <h5 class="date">Yesterday - Tuesday, April 25, 2018</h5>
+                      </div>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="bhistory-tab-item" browser-data="4">
+                      <div class="history-older">
+                        <h5 class="date">Monday, April 23, 2018</h5>
+                      </div>
+                      <ul>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                          <div class="row">
+                            <div class="col-md-1">
+                              <img src="assets/img/pdf-download-icon.png" alt="">
+                            </div>
+                            <div class="col-md-5">
+                              <header>
+                                <h5 class="title">g-Google Search</h5>
+                              </header>
+                            </div>
+                            <div class="col-md-4">
+                              <a href="#">https://www.google.com</a>
+                            </div>
+                            <div class="col-md-2 text-right">
+                              <time>4:45 pm</time>
+                            </div>
+                          </div>
+                          <i class="fa fa-times" aria-hidden="true"></i>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                  <div class="col-xs-2 col-sm-2 col-md-2 col-md-2 text-right">
-                    <button id="download-menu" class="fa fa-cog" aria-hidden="true"></button>
-                    <nav>
-                      <ul class="download-menu-settings text-left" style="display:none;">
-                        <li><a href="#">Clear All</a></li>
-                        <li><a href="#">Open Download Folder</a></li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
               </div>
-            </header>
-            <div id="download-list-page">
-              <ul id="download-list">
-                <li>
-                  <div class="list">
-                  </div>
-                </li>
-              </ul>
             </div>
-          </section> -->
-    <main role="main" class="main-content padding-adjust">
+          </div>
+        </div>
+        <!--End Clear cache history-->
         <div id="view-container">
-            <!-- <webview id="view1" class="view-instance"></webview> -->
+            <!--<webview id="view1" class="view-instance"></webview> -->
             <webview id="view2" class="view-instance active" src=""></webview>
             <span id="webview-reference"></span>
         </div>
