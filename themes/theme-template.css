@@ -3,16 +3,16 @@
  *  @tutorial
  *      1. If you want to override the core styles (the ones commented out) you will need to use the '!important' keyword.
  *      Example:
- *          .nav-icons {    
+ *          .nav-icons {
  *              fill: #123456!important;
  *          }
  *      2. Otherwise feel free to add any other styles you wish without the need of the '!important' keyword.
  *      Example:
  *          #nav-body-tabs {
  *              background-color: whitesmoke;
- *          }    
- *      3. Every element you can style is shown below separately, however, you can combine like styles, 
- *         and add pseudo selectors like ':hover', ':focus', etc... to any of the elements you wish. Remember 
+ *          }
+ *      3. Every element you can style is shown below separately, however, you can combine like styles,
+ *         and add pseudo selectors like ':hover', ':focus', etc... to any of the elements you wish. Remember
  *         the '!important' keyword is also needed for the pseudo selectors if you are overriding core styles.
  *      4. Only override core styles if needed as most are there for correct functionality.
  */
@@ -31,7 +31,10 @@
     /* pointer-events:none;	opacity:0.5; */
 }
 
-
+/* for startup shortcut: .shortcut-startup-button */
+.shortcut-startup-button{
+  cursor: pointer;
+}
 /* container that holds: #nav-ctrls-back, #nav-ctrls-forward, #nav-ctrls-reload, #nav-ctrls-url */
 
 #nav-body-ctrls {
@@ -147,7 +150,9 @@
 .nav-tabs-close {
     /* fill:#000; width:24px; height:24px; align-content:flex-end; */
 }
-
+.pin-sidebar{
+  padding-left: 60px;
+}
 
 /* tab loading animation, applied to: .nav-tabs-favicon */
 

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="./themes/chrome-like.css">
+  <link rel="stylesheet" href="./assets/css/sidebar-widget.css">
   <title>Osiris Browser</title>
 </head>
 
@@ -12,23 +13,25 @@
     You need to enable JavaScript to run this app.
   </noscript>
   <div id="wrapper">
-    <div id="nav-body-tabs"></div>
-    <div id="nav-body-ctrls"></div>
-    <div id="nav-body-view-wrapper">
+    <div id="nav-body-sidebar" class="widget-tabs"></div>
+    <div id="nav-body-tabs" class="pin-sidebar"></div>
+    <div id="nav-body-ctrls" class="pin-sidebar"></div>
+    <div id="nav-body-view-wrapper" class="pin-sidebar">
       <div id="nav-body-views"></div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     /* production */
     // const enav = new (require('electron-navigation'))()
-        
+
     /* development */
     const enav = new (require('./renderer-process/renderer_main.js'))();
 
     const navDefaultURL = loadStartupSettings();
 
     console.log(navDefaultURL);
-    
+
     enav.newTab(navDefaultURL, {
       title: 'New Tab',
       icon: 'default',
@@ -48,11 +51,11 @@
       shiftPressed = evt.shiftKey;
       altPressed = evt.altKey;
       ctrlPressed = evt.ctrlKey;
-      
+
       // DevTools for each tab => Ctrl+Shift+E
       if (shiftPressed && ctrlPressed && fromKeyCode(evt.keyCode) == 'E'){
         enav.openDevTools();
-        e.preventDefault();        
+        e.preventDefault();
         return false;
       }
       // New tab => Ctrl+T
@@ -64,26 +67,26 @@
       // Close tab => Ctrl+W
       if (ctrlPressed && fromKeyCode(evt.keyCode) == 'W'){
         enav.closeTab();
-        e.preventDefault();        
+        e.preventDefault();
         return false;
       }
       // Print tab => Ctrl+P
       if (ctrlPressed && fromKeyCode(evt.keyCode) == 'P'){
         enav.printTab();
-        e.preventDefault();        
-        return false;        
+        e.preventDefault();
+        return false;
       }
       // Prev tab => Ctrl+Shift+Tab
       if (ctrlPressed && shiftPressed && fromKeyCode(evt.keyCode) == 'Tab'){
         enav.prevTab();
-        e.preventDefault();        
-        return false;        
+        e.preventDefault();
+        return false;
       }
       // Next tab => Ctrl+Tab
       if (ctrlPressed && fromKeyCode(evt.keyCode) == 'Tab'){
         enav.nextTab();
-        e.preventDefault();        
-        return false;        
+        e.preventDefault();
+        return false;
       }
       return true;
     });
@@ -142,7 +145,7 @@
         if (n == 183 && KeyEvent && n == KeyEvent.DOM_VK_VOLUME_UP) return 'Volume Up'
       }
 
-      //Media buttons (Inspiron laptops) 
+      //Media buttons (Inspiron laptops)
       if (n == 173) return 'Mute On|Off'
       if (n == 174) return 'Volume Down'
       if (n == 175) return 'Volume Up'
