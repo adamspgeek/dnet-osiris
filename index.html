@@ -28,15 +28,17 @@
     /* development */
     const enav = new (require('./renderer-process/renderer_main.js'))();
 
-    const navDefaultURL = loadStartupSettings();
+    // Additional Renderers for Modules that needs in Main Browser
+    // Make sure add it as object
+    const oSettings = new (require('./renderer-process/renderer_settings.js'))();
 
-    console.log(navDefaultURL);
+    oSettings.initSettings();
+    
+    const navDefaultURL = oSettings.startUp();  
 
     enav.newTab(navDefaultURL, {
-      title: 'New Tab',
       icon: 'default',
       close: true,
-      readonlyUrl: true,
       contextMenu: true
     });
 

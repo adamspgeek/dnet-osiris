@@ -3,36 +3,6 @@ var Color = require('color.js');
 var urlRegex = require('url-regex');
 const contextMenu = require('electron-context-menu')
 var globalCloseableTabsOverride;
-var jsonfile = require('jsonfile');
-var path = require('path');
-
-var osiris_settings = path.join(__dirname, 'settings.json');
-
-function loadStartupSettings(){
-	var rValue = "";
-    jsonfile.readFile(osiris_settings, function(err, startup) {
-        //console.dir(startup.osirisStartUp[0]['startPage']);
-        switch(startup.osirisStartUp[0]['selected']){
-            case "1": {
-                rValue = 'default.html';
-                break;
-            }
-            case "2": {
-                rValue = startup.osirisStartUp[0]['lastBrowseURL'];
-                break;
-            }
-            case "3": {
-				rValue = startup.osirisStartUp[0]['specificPagesSelected'];
-                break;
-            }
-            default: {
-                rValue = 'default.html';
-                break;
-            }
-        }
-    });
-    return rValue;
-}
 
 /**
  * OBJECT
@@ -292,15 +262,16 @@ function Navigation(options) {
     // auto add http protocol to url input or do a search
     //
     this._purifyUrl = function (url) {
-        if (urlRegex({
-                strict: false,
-                exact: true
-            }).test(url)) {
-            url = (url.match(/^https?:\/\/.*/)) ? url : 'http://' + url;
-        }else if(url == ''){
-        	url = 'default.html';
-        } else {
-            url = (!url.match(/^[a-zA-Z]+:\/\//)) ? 'https://www.google.com/search?q=' + url.replace(' ', '+') : url;
+        if(url == 'default'){
+            url = 'default.html';
+        }else if(url == 'settings'){
+            url = 'settings.html';
+        }else{
+            if (urlRegex({strict: false, exact: true}).test(url)) {
+                url = (url.match(/^https?:\/\/.*/)) ? url : 'http://' + url;
+            }else {
+                url = (!url.match(/^[a-zA-Z]+:\/\//)) ? 'https://www.google.com/search?q=' + url.replace(' ', '+') : url;
+            }
         }
         return url;
     } //:_purifyUrl()

@@ -2,7 +2,7 @@
 	"osirisStartUp" : [
 		{
 			"selected" : "2",
-			"startPage" : "default.html",
+			"startPage" : "default",
 			"lastBrowseURL" : "https://www.google.com/",
 			"specificPagesSelected" : "decenternet",
 			"specificPagesList" : [
