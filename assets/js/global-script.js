@@ -13,7 +13,7 @@ $('.wallpaper-items-settings').slick({
   slidesToScroll: 7
 });
 //This is for the sidebar
-(function( $ ) {
+(function() {
 
   $( ".bookmarks a" ).click(function(event) {
       event.preventDefault();
@@ -24,27 +24,41 @@ $('.wallpaper-items-settings').slick({
   });
   $( ".history a" ).click(function(event) {
       event.preventDefault();
-      $(".web-ui").addClass("default-widget-active");
-      $('body').css('overflow','hidden');
+      $(".browser-history-wrapper").show();
   });
-
-})(jQuery);
+})();
 //Setting easy setup popup
-(function( $ ) {
+(function() {
+  $('.unpin-widget input').change(function(event) {
+      event.preventDefault();
+        if($(this).is(":checked")) {
+          $('header.header, .main-content').removeClass('padding-adjust');
+          $('.widget-tabs').addClass('unpin');
+        }else{
+          $('header.header').addClass('padding-adjust');
+          $('header.header, .main-content').addClass('padding-adjust');
+          $('.widget-tabs').removeClass('unpin');
+        }
+    });
+})();
+
+//unpin
+(function() {
   $( "#show-setting-button i" ).click(function(event){
     $('.startup-pop-up-settings').addClass('setting-active');
     $('.transparent-background').show();
   });
   $( "#close-settings" ).click(function(event){
     $('.startup-pop-up-settings').removeClass('setting-active');
+    $('.transparent-background').hide();
   });
   $( ".transparent-background" ).click(function(event){
     $('.startup-pop-up-settings').removeClass('setting-active');
-    $('.transparent-background').show();
+    $('.transparent-background').hide();
   });
-})(jQuery);
+})();
 
-(function( $ ) {
+(function() {
   /* Tabs Activiation
 	================================================== */
 
@@ -69,8 +83,34 @@ $('.wallpaper-items-settings').slick({
       }
 		});
 	});
-})(jQuery);
-(function( $ ) {
+})();
+(function() {
+  /* Clear Cache history Activiation
+	================================================== */
+
+	var tabs = $('ul.browser-history-list');
+
+	tabs.each(function(i) {
+
+		//Get all tabs
+		var tab = $(this).find('> li.history-tab');
+		tab.click(function(e) {
+      e.preventDefault();
+			//Get Location of tab's content
+			var browserId = $(this).attr('browser-id');
+      //Make Tab Active
+      tab.removeClass('bhistory-active');
+      $(this).addClass('bhistory-active');
+      //Hide Previous Tab Content & remove active class
+      $('div.bhistory-tab-item').removeClass('bhistory-active-item');
+      //Show Tab Content & add active class
+      if($(browserId).not('active')){
+        $("[browser-data='"+browserId+"']").addClass('bhistory-active-item');
+      }
+		});
+	});
+})();
+(function() {
   //Block ads process Settings
   var buttonBlockadds = $('.block-ads-popup-settings');
   var filterException = $('.filter-exception-list');
@@ -126,4 +166,26 @@ $('.wallpaper-items-settings').slick({
     event.preventDefault();
     $('.bookmarks-import-overlay-wrapper').hide();
   });
-})(jQuery);
+})();
+(function() {
+  $('#download-menu').click(function(event){
+    event.preventDefault();
+    $('.download-menu-settings').show();
+  });
+  $('.download-menu-settings a').click(function(event){
+    event.preventDefault();
+    $('.download-menu-settings').hide();
+  });
+})();
+// (function() {
+//   $('.speed-dial-button').click(function() {
+//     var fiterValue  = $('body').attr('body-filter');
+//     var dialContent = $('.active .nav-tabs-title')
+//     if(!$(fiterValue).hasClass('speed-dial-page')){
+//         var text = dialContent.text();
+//         $('body').addClass('speed-dial-page');
+//         $(dialContent).attr("title", 'Speed Dial');
+//         $(dialContent).text(text.replace(text, 'Speed Dial'));
+//     }
+//   });
+// })();

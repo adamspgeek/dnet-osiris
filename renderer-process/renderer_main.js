@@ -432,12 +432,26 @@ function Navigation(options) {
     } //:_updateUrl()
 } //:Navigation()
 function _widgetSidebar(){
-	$('.widget-tabs').append('<aside class="bookmarks default"><a title="Bookmarks"><i class="fa fa-heart" aria-hidden="true"></i></a></aside>');
-  $('.widget-tabs').append('<aside class="snapshot default"><a title="Snapshot"><i class="fa fa-camera" aria-hidden="true"></i></a></aside>');
-  $('.widget-tabs').append('<aside class="history default"><a title="History"><i class="fa fa-history" aria-hidden="true"></i></a></aside>');
-  // <aside class="unpin-widget">
-  //     <a title="Unpin"><input type="checkbox"></i></a>
-  // </aside>
+	var _widgetBookmarks = '<svg viewBox="0 0 512 512"><path d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"/></svg>',
+			_widgetSnapshot	 = '<svg viewBox="0 0 512 512"><path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"/></svg>',
+			_widgetStartup	 = '<svg viewBox="0 0 512 512"><path d="M296 32h192c13.255 0 24 10.745 24 24v160c0 13.255-10.745 24-24 24H296c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24zm-80 0H24C10.745 32 0 42.745 0 56v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24zM0 296v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm296 184h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H296c-13.255 0-24 10.745-24 24v160c0 13.255 10.745 24 24 24z"/></svg>',
+			_widgetPersonal	 ='<svg viewBox="0 0 576 512"><path d="M552 64H112c-20.858 0-38.643 13.377-45.248 32H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h496c13.255 0 24-10.745 24-24V88c0-13.255-10.745-24-24-24zM48 392V144h16v248c0 4.411-3.589 8-8 8s-8-3.589-8-8zm480 8H111.422c.374-2.614.578-5.283.578-8V112h416v288zM172 280h136c6.627 0 12-5.373 12-12v-96c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v96c0 6.627 5.373 12 12 12zm28-80h80v40h-80v-40zm-40 140v-24c0-6.627 5.373-12 12-12h136c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H172c-6.627 0-12-5.373-12-12zm192 0v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0-144v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0 72v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12z"/></svg>',
+			_widgetHitory		 = '<svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>';
+	$('.widget-tabs').append('<aside class="bookmarks default"><a title="Bookmarks">'+_widgetBookmarks+'</a></aside>');
+  $('.widget-tabs').append('<aside class="snapshot default"><a title="Snapshot">'+_widgetSnapshot+'</a></aside>');
+	$('.widget-tabs').append('<aside class="widget-startup default"><a title="Speed Dial">'+_widgetStartup+'</a></aside>');
+	$('.widget-tabs').append('<aside class="widget-personal-news default"><a title="Personal News">'+_widgetPersonal+'</a></aside>');
+  $('.widget-tabs').append('<aside class="history default"><a title="History">'+_widgetHitory+'</a></aside>');
+  $('.widget-tabs').append('<aside class="unpin-widget"><a title="Unpin"><input type="checkbox"></i></a></aside>');
+
+	$('.history a').on('click', function () {
+			$('.nav-views-view.active').attr('src','browser-history.html');
+			// var speedDialTitle = $('.active .nav-tabs-title');
+			// $(this).addClass('disabled');
+			// speedDialTitle.attr("title", 'Osiris Browser');
+			// var text = speedDialTitle.text();
+			// speedDialTitle.text(text.replace(text, 'Osiris Browser'));
+	});
 }_widgetSidebar();
 
 /**
