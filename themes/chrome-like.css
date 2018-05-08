@@ -24,6 +24,9 @@
   fill: #606060!important
 }
 
+#nav-ctrls-download{
+  margin: 0 13px;
+}
 .nav-icons:hover {
   fill: #000!important
 }

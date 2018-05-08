@@ -16,6 +16,7 @@ function Navigation(options) {
         showForwardButton: true,
         showReloadButton: true,
 				showStartupButton:true,
+        showDownload:true,
         showUrlBar: true,
         showAddTabButton: true,
         closableTabs: true,
@@ -44,10 +45,11 @@ function Navigation(options) {
     this.SVG_BACK = '<svg height="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>';
     this.SVG_FORWARD = '<svg height="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
     this.SVG_RELOAD = '<svg height="100%" viewBox="0 0 24 24" id="nav-ready"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>';
-		this.SVG_STARTUP ='<svg width="24" height="100%" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M832 1024v384q0 52-38 90t-90 38h-512q-52 0-90-38t-38-90v-384q0-52 38-90t90-38h512q52 0 90 38t38 90zm0-768v384q0 52-38 90t-90 38h-512q-52 0-90-38t-38-90v-384q0-52 38-90t90-38h512q52 0 90 38t38 90zm896 768v384q0 52-38 90t-90 38h-512q-52 0-90-38t-38-90v-384q0-52 38-90t90-38h512q52 0 90 38t38 90zm0-768v384q0 52-38 90t-90 38h-512q-52 0-90-38t-38-90v-384q0-52 38-90t90-38h512q52 0 90 38t38 90z"/></svg>';
+		this.SVG_STARTUP ='<svg viewBox="0 0 512 512"><path d="M296 32h192c13.255 0 24 10.745 24 24v160c0 13.255-10.745 24-24 24H296c-13.255 0-24-10.745-24-24V56c0-13.255 10.745-24 24-24zm-80 0H24C10.745 32 0 42.745 0 56v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745 24-24V56c0-13.255-10.745-24-24-24zM0 296v160c0 13.255 10.745 24 24 24h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H24c-13.255 0-24 10.745-24 24zm296 184h192c13.255 0 24-10.745 24-24V296c0-13.255-10.745-24-24-24H296c-13.255 0-24 10.745-24 24v160c0 13.255 10.745 24 24 24z"/></svg>';
 		this.SVG_FAVICON = '<svg height="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>';
     this.SVG_ADD = '<svg height="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>';
     this.SVG_CLEAR = '<svg height="100%" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>';
+    this.SVG_DOWNLOAD = '<svg viewBox="0 0 512 512"><path d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"/></svg>';
     /**
      * ADD ELEMENTS
      */
@@ -55,16 +57,19 @@ function Navigation(options) {
         $('#nav-body-ctrls').append('<i id="nav-ctrls-back" class="nav-icons disabled" title="Go back">' + this.SVG_BACK + '</i>');
     }
     if (options.showForwardButton) {
-        $('#nav-body-ctrls').append('<i id="nav-ctrls-forward" class="nav-icons disabled" title="Go forward">' + this.SVG_FORWARD + '</i>');
+        $('#nav-body-ctrls').append('<i id="nav-ctrls-forward" class="nav-icons disabled" title="Go forward">' + this.SVG_FORWARD+ '</i>');
     }
     if (options.showReloadButton) {
-        $('#nav-body-ctrls').append('<i id="nav-ctrls-reload" class="nav-icons disabled" title="Reload page">' + this.SVG_RELOAD + '</i>');
+        $('#nav-body-ctrls').append('<i id="nav-ctrls-reload" class="nav-icons disabled" title="Reload page">' + this.SVG_RELOAD+ '</i>');
     }
 		if(options.showStartupButton){
-				$('#nav-body-ctrls').append('<i id="nav-ctrls-startup" class="nav-icons disabled" title="Start Page">'+this.SVG_STARTUP +'</i>');
+				$('#nav-body-ctrls').append('<i id="nav-ctrls-startup" class="nav-icons disabled" title="Start Page">'+this.SVG_STARTUP+'</i>');
 		}
     if (options.showUrlBar) {
-        $('#nav-body-ctrls').append('<input id="nav-ctrls-url" type="text" title="Enter an address or search term"/>')
+        $('#nav-body-ctrls').append('<input id="nav-ctrls-url" type="text" title="Enter an address or search term"/>');
+    }
+    if (options.showDownload) {
+        $('#nav-body-ctrls').append('<i id="nav-ctrls-download" class="nav-icons" title="Start Page">'+this.SVG_DOWNLOAD+'</i>');
     }
     if (options.showAddTabButton) {
         $('#nav-body-tabs').append('<i id="nav-tabs-add" class="nav-icons" title="Add new tab">' + this.SVG_ADD + '</i>');
@@ -147,13 +152,28 @@ function Navigation(options) {
             NAV.stop();
         }
     });
+    //
+    // Speed dial functions
+    //
+    function _startupRedirection(){
+      $('.nav-views-view.active').attr('src','default.html');
+      // var speedDialTitle = $('.active .nav-tabs-title');
+      // $(this).addClass('disabled');
+      // speedDialTitle.attr("title", 'Osiris Browser');
+      // var text = speedDialTitle.text();
+      // speedDialTitle.text(text.replace(text, 'Osiris Browser'));
+    }
+    //
+    // header speed dial
+    //
 		$('#nav-body-ctrls').on('click', '#nav-ctrls-startup', function () {
-				$('.nav-views-view.active').attr('src','default.html');
-				var speedDialTitle = $('.active .nav-tabs-title');
-				$(this).addClass('disabled');
-				speedDialTitle.attr("title", 'Osiris Browser');
-				var text = speedDialTitle.text();
-				speedDialTitle.text(text.replace(text, 'Osiris Browser'));
+		    _startupRedirection();
+    });
+    //
+    // Widget Startup speed dial
+    //
+    $('.widget-startup a').on('click',function () {
+		    _startupRedirection();
     });
     //
     // highlight address input text on first select
@@ -165,6 +185,12 @@ function Navigation(options) {
                 return false;
             })
             .select();
+    });
+    //
+    // donwload page
+    //
+    $('#nav-body-ctrls').on('click', '#nav-ctrls-download', function () {
+		   $('.nav-views-view.active').attr('src','download-history.html');
     });
     //
     // load or search address on enter / shift+enter
