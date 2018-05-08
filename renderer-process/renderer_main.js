@@ -42,6 +42,7 @@ function Navigation(options) {
     } else {
         this.TAB_ICON = "clean";
     }
+    this.SVG_LOADING ='<svg viewBox="0 0 512 512"><path d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z"/></svg>';
     this.SVG_BACK = '<svg height="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>';
     this.SVG_FORWARD = '<svg height="100%" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
     this.SVG_RELOAD = '<svg height="100%" viewBox="0 0 24 24" id="nav-ready"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>';
@@ -69,7 +70,7 @@ function Navigation(options) {
         $('#nav-body-ctrls').append('<input id="nav-ctrls-url" type="text" title="Enter an address or search term"/>');
     }
     if (options.showDownload) {
-        $('#nav-body-ctrls').append('<i id="nav-ctrls-download" class="nav-icons" title="Start Page">'+this.SVG_DOWNLOAD+'</i>');
+        $('#nav-body-ctrls').append('<i id="nav-ctrls-download" class="nav-icons" title="Download">'+this.SVG_DOWNLOAD+'</i>');
     }
     if (options.showAddTabButton) {
         $('#nav-body-tabs').append('<i id="nav-tabs-add" class="nav-icons" title="Add new tab">' + this.SVG_ADD + '</i>');
@@ -262,7 +263,8 @@ function Navigation(options) {
             tab = $('.nav-tabs-tab.active');
         }
 
-        tab.find('.nav-tabs-favicon').css('animation', 'nav-spin 2s linear infinite');
+        // tab.find('.nav-tabs-favicon').css('animation', 'nav-spin 2s linear infinite');
+        $('.nav-tabs-tab.active').prepend('<i class="reloading-icon">'+this.SVG_LOADING+'</i>').parent('reloading-icon').remove();
         $('#nav-ctrls-reload').html(this.SVG_CLEAR);
     } //:_loading()
     //
@@ -280,7 +282,8 @@ function Navigation(options) {
 				}else{
 						$('.shortcut-startup-button').addClass('disabled');
 				}
-        tab.find('.nav-tabs-favicon').css('animation', '');
+        // tab.find('.nav-tabs-favicon').css('animation', '');
+        $('.reloading-icon').remove();
         $('#nav-ctrls-reload').html(this.SVG_RELOAD);
 
     } //:_stopLoading()
@@ -439,16 +442,21 @@ function _widgetSidebar(){
 	$('.widget-tabs').append('<aside class="widget-startup default"><a title="Speed Dial">'+_widgetStartup+'</a></aside>');
 	$('.widget-tabs').append('<aside class="widget-personal-news default"><a title="Personal News">'+_widgetPersonal+'</a></aside>');
   $('.widget-tabs').append('<aside class="history default"><a title="History">'+_widgetHitory+'</a></aside>');
-  $('.widget-tabs').append('<aside class="unpin-widget"><a title="Unpin"><input type="checkbox"></i></a></aside>');
+  $('.widget-tabs').append('<aside class="unpin-widget"><a title="Unpin"><label class="switch"><input type="checkbox" checked="checked"><span class="slider"></span></label></a></aside>');
 
 	$('.history a').on('click', function () {
 			$('.nav-views-view.active').attr('src','browser-history.html');
-			// var speedDialTitle = $('.active .nav-tabs-title');
-			// $(this).addClass('disabled');
-			// speedDialTitle.attr("title", 'Osiris Browser');
-			// var text = speedDialTitle.text();
-			// speedDialTitle.text(text.replace(text, 'Osiris Browser'));
 	});
+
+  $('.unpin-widget input').click(function() {
+      if (!$(this).is(':checked')) {
+        $('.widget-tabs').css('background',' rgba(25, 29, 30, 0.57)');
+        $('#nav-body-ctrls, #nav-body-tabs, #nav-body-view-wrapper').removeClass('pin-sidebar');
+      }else{
+        $('#nav-body-ctrls, #nav-body-tabs, #nav-body-view-wrapper').addClass('pin-sidebar');
+        $('.widget-tabs').css('background','#191d1e');
+      }
+  });
 }_widgetSidebar();
 
 /**
