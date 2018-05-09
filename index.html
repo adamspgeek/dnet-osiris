@@ -28,13 +28,15 @@
     /* development */
     const enav = new (require('./renderer-process/renderer_main.js'))();
 
+    /* browser history */
+    require('./renderer-process/renderer_bhistory.js');
     // Additional Renderers for Modules that needs in Main Browser
     // Make sure add it as object
     const oSettings = new (require('./renderer-process/renderer_settings.js'))();
 
     oSettings.initSettings();
-    
-    const navDefaultURL = oSettings.startUp();  
+
+    const navDefaultURL = oSettings.startUp();
 
     enav.newTab(navDefaultURL, {
       icon: 'default',
