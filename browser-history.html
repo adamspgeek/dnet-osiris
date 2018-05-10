@@ -19,7 +19,7 @@
               <div class="browser-history-tab">
                 <h2>History</h2>
                 <ul class="browser-history-list">
-                  <li class="history-tab" browser-id="1" class="bhistory-active">All</li>
+                  <li class="history-tab bhistory-active" browser-id="1">All</li>
                   <li class="separator"></li>
                   <li class="history-tab" browser-id="2">Today</li>
                   <li class="history-tab" browser-id="3">Yesterday</li>
@@ -42,50 +42,8 @@
                     </div>
                   </header>
                   <div class="browser-history-data" style="overflow-y:scroll;overflow-x:hidden;">
-                    <div class="bhistory-tab-item bhistory-active-item" browser-data="1">
-                      <div class="history-today">
-                        <h5 class="date">Today - Wednesday, April 25, 2018</h5>
-                        <ul>
-                          <li>
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img src="assets/img/pdf-download-icon.png" alt="">
-                              </div>
-                              <div class="col-md-5">
-                                <header>
-                                  <h5 class="title">g-Google Search</h5>
-                                </header>
-                              </div>
-                              <div class="col-md-4">
-                                <a href="#">https://www.google.com</a>
-                              </div>
-                              <div class="col-md-2 text-right">
-                                <time>4:45 pm</time>
-                              </div>
-                            </div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                          </li>
-                          <li>
-                            <div class="row">
-                              <div class="col-md-1">
-                                <img src="assets/img/pdf-download-icon.png" alt="">
-                              </div>
-                              <div class="col-md-5">
-                                <header>
-                                  <h5 class="title">g-Google Search</h5>
-                                </header>
-                              </div>
-                              <div class="col-md-4">
-                                <a href="#">https://www.google.com</a>
-                              </div>
-                              <div class="col-md-2 text-right">
-                                <time>4:45 pm</time>
-                              </div>
-                            </div>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                          </li>
-                        </ul>
-                      </div>
+                    <div class="bhistory-tab-item bhistory-active-item all-data-browsing" browser-data="1">
+
                     </div>
                     <div class="bhistory-tab-item" browser-data="2">
                       <div class="history-today">
@@ -307,9 +265,10 @@
     </script>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
     <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="assets/js/global-script.js"></script>
     <script>
-      require('./renderer.js')
+      require('./renderer.js');
+      require('./renderer-process/renderer_bhistory.js');
     </script>
+    <script src="assets/js/global-script.js"></script>
   </body>
 </html>

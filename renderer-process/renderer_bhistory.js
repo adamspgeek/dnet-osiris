@@ -25,27 +25,24 @@ function readUrlHistory(){
           dateYesterday = (24*60*60*1000) * 1, //1 day
           dateOlder = (24*60*60*1000) * 2, //1 day
           counter=1;
+
           for (var i=0; i<urlFile.url.length; i++) {
               var urlCounter = urlFile.url[i];
-              // console.log(JSON.stringify(urlCounter.url_cache).toString().split("\n"));
+              var url_data = JSON.stringify(urlCounter.url_cache).toString('utf8');
+              var url_parse = JSON.parse(url_data);
+                  $('.browser-history-wrapper').append('<h5 class="date">'+urlCounter.url_date+'</h5>');
+                  for (var countCache=0; countCache<url_parse.length; countCache++){
+                        var urlData = url_parse[countCache];
 
-                // for (var i=0; i<urlCounter.url.url_cache.length; i++) {
-                //     var cacheCounter = urlCounter.url_cache[i];
-                //     console.log(cacheCounter.url_date);
-                // }
+                        // console.log(urlData.url_id);
+                        // console.log(urlData.url_date);
+                        // console.log(urlData.url_icon);
+                        // console.log(urlData.url_title);
+                        // console.log(urlData.url_linked);
 
-              // }
-              // var newUrlTime = new Date(urlCounter.url_date);
-              // if(newUrlTime.getTime()>(urlDate.getTime()-dateYesterday)){
-              //   // console.log(urlCounter.url_date);
-              // }
-              // if(( newUrlTime.getTime()>=( urlDate.getTime()-dateOlder)) && ( newUrlTime.getTime()<=( urlDate.getTime()-dateYesterday))){
-              //     // console.log(urlCounter.url_date);
-              // }
-              // if(newUrlTime.getTime() < (urlDate.getTime()-dateOlder)){
-              //   // console.log(urlCounter.url_date);
-              // }
+                  }
           }
+
 
     });
 }
